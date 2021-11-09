@@ -9,7 +9,6 @@ from .const import DOMAIN
 
 
 class SimpleConfigFlow(ConfigFlow, domain=DOMAIN):
-    """Handle a config flow for local_ip."""
 
     VERSION = 1
 

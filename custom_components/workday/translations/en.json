@@ -1,14 +1,14 @@
 {
     "config": {
         "abort": {
-            "single_instance_allowed": "Already configured. Only a single configuration possible."
+            "single_instance_allowed": "仅允许单个配置"
         },
         "step": {
             "user": {
-                "description": "Do you want to start set up?",
-                "title": "Workday"
+                "description": "周一至周五正常上班，国定节假日自动补班 \n\n 项目：https://github.com/shaonianzhentan/workday",
+                "title": "使用国定节假日"
             }
         }
     },
-    "title": "Workday"
+    "title": "工作日"
 }

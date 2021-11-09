@@ -1,6 +1,7 @@
 {
     "domain": "workday",
     "name": "\u5DE5\u4F5C\u65E5",
+    "version": "1.0",
     "config_flow": true,
     "documentation": "https://github.com/shaonianzhentan/workday",
     "requirements": [],
