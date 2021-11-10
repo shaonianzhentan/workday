@@ -27,8 +27,7 @@ class WorkdaySensor(BinarySensorEntity):
 
     async def async_update(self) -> None:
         today = time.localtime()
-        # 判断当前年月日是否一致
-        if self.today is None or (self.today.tm_year != today.tm_year and self.today.tm_mon != today.tm_mon and self.today.tm_mday != today.tm_mday):
+        if self.today is None or self.today.tm_mday != today.tm_mday:
             is_on = False
             today_str = time.strftime('%Y-%m-%d', today)
             # 计算闰年
