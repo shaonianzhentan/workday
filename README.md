@@ -6,4 +6,6 @@
 
 ## 使用方式
 
-安装完成重启HA，刷新一下页面，在集成里搜索工作日即可
+安装完成重启HA，刷新一下页面，在集成里搜索`工作日`即可
+
+[![Add Integration](https://my.home-assistant.io/badges/config_flow_start.svg)](https://my.home-assistant.io/redirect/config_flow_start?domain=workday)
