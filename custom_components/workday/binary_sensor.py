@@ -39,23 +39,26 @@ class WorkdaySensor(BinarySensorEntity):
             if today.tm_wday >= 0 and today.tm_wday < 5:
                 is_on = True
             # 判断是否节假日
-            res = await self.hass.async_add_executor_job(requests.get, f'https://cdn.jsdelivr.net/gh/bastengao/chinese-holidays-node@master/data/{today.tm_year}.json')
-            holiday = res.json()
-            for holi in holiday:
-                holi_range = holi['range']
-                holi_type = holi['type']
-                if len(holi_range) == 1:
-                    if holi_range[0] == today_str:
-                        is_on = holi_type == 'workingday'
-                elif len(holi_range) == 2:
-                    if today_str >= holi_range[0] and today_str <= holi_range[1]:
-                        is_on = holi_type == 'workingday'
-            self._attr_is_on = is_on
-            self._attr_extra_state_attributes = {
-                '周': weeks[today.tm_wday],
-                '日期': today_str,
-                '今年天数': year_day,
-                '已过天数': today.tm_yday,
-                '剩余天数': year_day - today.tm_yday
-            }
-            self.today = today
+            try:
+                res = await self.hass.async_add_executor_job(requests.get, f'https://cdn.jsdelivr.net/gh/bastengao/chinese-holidays-node@master/data/{today.tm_year}.json')
+                holiday = res.json()
+                for holi in holiday:
+                    holi_range = holi['range']
+                    holi_type = holi['type']
+                    if len(holi_range) == 1:
+                        if holi_range[0] == today_str:
+                            is_on = holi_type == 'workingday'
+                    elif len(holi_range) == 2:
+                        if today_str >= holi_range[0] and today_str <= holi_range[1]:
+                            is_on = holi_type == 'workingday'
+                self._attr_is_on = is_on
+                self._attr_extra_state_attributes = {
+                    '周': weeks[today.tm_wday],
+                    '日期': today_str,
+                    '今年天数': year_day,
+                    '已过天数': today.tm_yday,
+                    '剩余天数': year_day - today.tm_yday
+                }
+                self.today = today
+            except Exception as ex:
+                print(ex)
