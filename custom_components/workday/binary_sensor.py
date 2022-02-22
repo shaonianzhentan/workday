@@ -40,7 +40,8 @@ class WorkdaySensor(BinarySensorEntity):
                 is_on = True
             # 判断是否节假日
             try:
-                res = await self.hass.async_add_executor_job(requests.get, f'https://cdn.jsdelivr.net/gh/bastengao/chinese-holidays-node@master/data/{today.tm_year}.json')
+                url = f'http://chinese-holidays-data.basten.me/data/{today.tm_year}.json'
+                res = await self.hass.async_add_executor_job(requests.get, url)
                 holiday = res.json()
                 for holi in holiday:
                     holi_range = holi['range']
