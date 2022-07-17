@@ -11,6 +11,10 @@
 
 [![Add Integration](https://my.home-assistant.io/badges/config_flow_start.svg)](https://my.home-assistant.io/redirect/config_flow_start?domain=workday)
 
+### 参考文档
+
+https://github.com/bastengao/chinese-holidays-node
+
 ## 如果这个项目对你有帮助，请我喝杯<del style="font-size: 14px;">咖啡</del>奶茶吧😘
 |  |支付宝|微信|
 |---|---|---|
