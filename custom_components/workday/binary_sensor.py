@@ -1,4 +1,4 @@
-import time, requests, sxtwl
+import time, requests
 from homeassistant.components.binary_sensor import BinarySensorEntity
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import CONF_NAME
@@ -54,18 +54,12 @@ class WorkdaySensor(BinarySensorEntity):
                         if today_str >= holi_range[0] and today_str <= holi_range[1]:
                             is_on = holi_type == 'workingday'
                 self._attr_is_on = is_on
-
-                # 读取农历时间
-                day = sxtwl.fromSolar(year, month, day)
                 self._attr_extra_state_attributes = {
                     '周': weeks[today.tm_wday],
                     '日期': today_str,
                     '今年天数': year_day,
                     '已过天数': today.tm_yday,
-                    '剩余天数': year_day - today.tm_yday,
-                    '农历年': day.getLunarYear(),
-                    '农历月': day.getLunarMonth(),
-                    '农历日': day.getLunarDay()
+                    '剩余天数': year_day - today.tm_yday
                 }
                 self.today = today
             except Exception as ex:
