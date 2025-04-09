@@ -1,11 +1,11 @@
 {
     "domain": "workday",
     "name": "\u5DE5\u4F5C\u65E5",
-    "version": "2025.3.24",
+    "version": "2025.4.9",
     "config_flow": true,
     "documentation": "https://github.com/shaonianzhentan/workday",
     "requirements": [
-        "sxtwl>=2.0.7"
+        "lunar_python>=1.4.3"
     ],
     "codeowners": [
         "@shaonianzhentan"
